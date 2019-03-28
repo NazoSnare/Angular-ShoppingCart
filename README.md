@@ -1,16 +1,21 @@
-# Angular6 - ShoppingCart + MDBootstrap + Firebase + i18n
+# Angular7 - ShoppingCart + MDBootstrap + Firebase + i18n
 
 [![HitCount](http://hits.dwyl.io/ikismail/Angular-ShoppingCart.svg)](http://hits.dwyl.io/ikismail/Angular-ShoppingCart)
+[![GitHub forks](https://img.shields.io/github/forks/ikismail/Angular-ShoppingCart.svg)](https://github.com/ikismail/Angular-ShoppingCart/network)
+[![Github Dependencies](https://david-dm.org/ikismail/Angular-ShoppingCart.svg)](https://david-dm.org/ikismail/Angular-ShoppingCart.svg)
+[![GitHub stars](https://img.shields.io/github/stars/ikismail/Angular-ShoppingCart.svg)](https://github.com/ikismail/Angular-ShoppingCart/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/ikismail/Angular-ShoppingCart.svg)](https://github.com/ikismail/Angular-ShoppingCart/issues)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/ikismail/Angular-ShoppingCart/blob/master/LICENSE)
 [![npm](https://img.shields.io/badge/demo-online-brightgreen.svg)](https://angular-shoppingcart.firebaseapp.com/)
-[![Build Status](https://travis-ci.org/ikismail/Angular-ShoppingCart.svg?branch=master)](https://travis-ci.org/ikismail/Angular-ShoppingCart)
+[![Twitter](https://img.shields.io/twitter/url/https/github.com/ikismail/Angular-ShoppingCart.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fikismail%2FAngular-ShoppingCart)
 
+<!-- [![Build Status](https://travis-ci.org/ikismail/Angular-ShoppingCart.svg?branch=master)](https://travis-ci.org/ikismail/Angular-ShoppingCart) -->
 
-Developing a **ShoppingCart (Ecommerce) Application using Angular6**.
+Developing a **ShoppingCart (Ecommerce) Application using Angular7**.
 
 **Live Demo** : [Angular-shopping-cart](https://angular-shoppingcart.firebaseapp.com/)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.7.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.1.
 
 ## Functionalities
 
@@ -21,13 +26,16 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Admin can add product to the product list
 - Admin can edit/delete the product.
 
-3.  Security
+3. Drag and Drop `Angular 7 Drag & Drop`
+- Implemented [Angular Drag and Drop CDK](https://material.angular.io/cdk/drag-drop/overview)
+
+1.  Security
 
 - Implmented Authentication and Authorization
 
 ## Tools and Technologies
 
-- Technology: HTML, MDBootstrap, CSS, Angular-6, Firebase, i18n, Charts, Progressive Web Application, jsPDF (to download Receipt as PDF).
+- Technology: HTML, MDBootstrap, CSS, Angular-7, Firebase, i18n, Drag & Drop, Progressive Web Application, jsPDF (to download Receipt as PDF).
 - Database : Angular Firebase.
 
 #### This Projects covers all fundamentals of Angular
@@ -82,7 +90,22 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
     };
     ```
 
-9.  Run the Server.
+9.  For Admin Role `Register or SignIn with Google Auth`
+
+    your registered data will be saved inside the firebase **clients** table.
+
+    ```
+        -clients
+            -LRSkWxGAKQAFZmyfsx6
+                -createdOn: "1542046725"
+                -email: "<<YOUR_REGISTERED_EMAIL_ID>>"
+                -isAdmin: false      <--- Change this to true
+                ...
+    ```
+
+    Now you can able to access the Admin Privileges like `Creating Product, Removing Product, etc..`
+
+10. Run the Server.
 
 ## Screenshots:
 
@@ -93,6 +116,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ### Products Page:
 
 ![Alt text](https://github.com/ikismail/Angular-ShoppingCart/blob/master/screenshots/products.PNG "Home Page")
+
+### Work Board Page:
+
+![Alt text](https://github.com/ikismail/Angular-ShoppingCart/blob/master/screenshots/drag&drop.PNG "Home Page")
 
 ## Development server
 
@@ -128,4 +155,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## License
 
-- [MIT license](https://github.com/ikismail/Angular-ShoppingCart/blob/master/LICENSE)
+This project is licensed under the MIT License - see the [MIT license](https://github.com/ikismail/Angular-ShoppingCart/blob/master/LICENSE) file for details

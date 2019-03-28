@@ -4,32 +4,47 @@ import { Observable } from "rxjs";
 import { User } from "../models/user";
 import { AngularFireAuth } from "angularfire2/auth";
 import { Router } from "@angular/router";
+import { UserService } from "./user.service";
 
 @Injectable()
 export class AuthService {
   user: Observable<firebase.User>;
   userDetails: firebase.User = null;
-
-  constructor(private firebaseAuth: AngularFireAuth, private router: Router) {
+  loggedUser;
+  dbUser;
+  constructor(
+    private firebaseAuth: AngularFireAuth,
+    private router: Router,
+    private userService: UserService
+  ) {
     this.user = firebaseAuth.authState;
+    this.dbUser = new User();
     this.user.subscribe(user => {
       if (user) {
         this.userDetails = user;
+        userService
+          .isAdmin(this.userDetails.email)
+          .snapshotChanges()
+          .subscribe(data => {
+            data.forEach(el => {
+              const y = el.payload.toJSON();
+              this.dbUser = y;
+            });
+          });
       } else {
         this.userDetails = null;
       }
     });
   }
 
-  isLoggedIn() {
-    if (this.userDetails === null) {
-      return false;
-    } else {
+  isLoggedIn(): boolean {
+    if (this.userDetails !== null) {
       return true;
     }
   }
 
   logout() {
+    this.loggedUser = null;
     this.firebaseAuth.auth.signOut().then(res => this.router.navigate(["/"]));
   }
 
@@ -52,7 +67,7 @@ export class AuthService {
         loggedUser.emailId = user.email;
         loggedUser.phoneNumber = user.phoneNumber;
         loggedUser.avatar = user.photoURL;
-        loggedUser.isAdmin = user.email === "admin@gmail.com" ? true : false;
+        loggedUser.isAdmin = this.dbUser["isAdmin"];
       }
     } else {
       this.userDetails = null;
@@ -63,6 +78,7 @@ export class AuthService {
 
   isAdmin(): boolean {
     const user = this.getLoggedInUser();
+    // console.log("loggedUSer", user)
     if (user != null) {
       if (user.isAdmin === true) {
         return true;
